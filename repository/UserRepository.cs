@@ -16,7 +16,12 @@ public class UserRepository : IUserRepository
 
     public async Task<User> CreateUserWithUniqueIntIdAsync(User newUser)
     {
-        var maxId = await _usersCollection.AsQueryable().MaxAsync(user => (int?)user.Id) ?? 0;
+        List<User> users = await GetAllUsersAsync();
+        var maxId = 0;
+        if (users.Count > 0)
+        {
+            maxId = await _usersCollection.AsQueryable().MaxAsync(user => (int?)user.Id) ?? 0;
+        }
         newUser.Id = maxId + 1;
         while (await _usersCollection.Find(user => user.Id == newUser.Id).AnyAsync())
         {
@@ -30,14 +35,14 @@ public class UserRepository : IUserRepository
         await _usersCollection.Find(_ => true).ToListAsync();
 
     public async Task<User> GetUserByIdAsync(string id) =>
-        await _usersCollection.Find<User>(user => user._id.ToString() == id).FirstOrDefaultAsync();
+        await _usersCollection.Find<User>(user => user.Id.ToString() == id).FirstOrDefaultAsync();
 
     public async Task CreateUserAsync(User user) =>
         await _usersCollection.InsertOneAsync(user);
 
     public async Task UpdateUserAsync(string id, User user) =>
-        await _usersCollection.ReplaceOneAsync(user => user._id.ToString() == id, user);
+        await _usersCollection.ReplaceOneAsync(user => user.Id.ToString() == id, user);
 
     public async Task DeleteUserAsync(string id) =>
-        await _usersCollection.DeleteOneAsync(user => user._id.ToString() == id);
+        await _usersCollection.DeleteOneAsync(user => user.Id.ToString() == id);
 }

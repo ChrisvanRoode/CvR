@@ -26,12 +26,18 @@ builder.Services.AddCors(options =>
 builder.Services.Configure<MongoDbSettings>(
     builder.Configuration.GetSection("MongoDbSettings"));
 
+builder.Services.Configure<SmtpSettings>(
+    builder.Configuration.GetSection("SmtpSettings"));
+
 builder.Services.AddSingleton<IMongoClient, MongoClient>(sp =>
     new MongoClient(builder.Configuration.GetValue<string>("MongoDbSettings:ConnectionString")));
 
 builder.Services.AddScoped<IItemRepository, ItemRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+
+builder.Services.AddTransient<IEmailService, EmailService>();
+builder.Services.AddTransient<UserService>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer(); // Needed for .NET 6 and later

@@ -7,11 +7,13 @@ public class UsersController : ControllerBase
 {
     private readonly IUserRepository _userRepository;
     private readonly IRoleRepository _roleRepository;
+    private readonly UserService _userService;
 
-    public UsersController(IUserRepository userRepository, IRoleRepository roleRepository)
+    public UsersController(IUserRepository userRepository, IRoleRepository roleRepository, UserService userService)
     {
         _userRepository = userRepository;
         _roleRepository = roleRepository;
+        _userService = userService;
     }
 
     [HttpGet]
@@ -32,9 +34,10 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] User user, int roleId)
+    public async Task<IActionResult> Post([FromBody] User user, [FromQuery] int roleId)
     {   
         user.Role = await _roleRepository.GetRoleByIdAsync(roleId.ToString());
+        _userService.EmailAboutCreatedUser(user);
         await _userRepository.CreateUserWithUniqueIntIdAsync(user);
         return CreatedAtAction(nameof(Get), new { id = user.Id }, user);
     }
