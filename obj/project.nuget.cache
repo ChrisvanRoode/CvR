@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xwmA8cSlefBfa5z2FTt20bGL+Z68BU/jsFiwev7mCgpm04LFY8PPLlnzdjzbLTxmx75lteExl91fxk69B61xWw==",
+  "dgSpecHash": "dftvbArUvKT0qvFtdLqnu2NkKo3j6ua/5x6t2qzkJp7H4JSHKymU/ApJla30oKk9NMgz+7aKa4pukA3qxi7nvg==",
   "success": true,
-  "projectFilePath": "/Users/chrisvanroode/ChrisvanRoodeWebsite/ChrisvanRoodeWebsite.csproj",
+  "projectFilePath": "/Users/chrisvanroode/CvR/ChrisvanRoodeWebsite.csproj",
   "expectedPackageFiles": [
     "/Users/chrisvanroode/.nuget/packages/awssdk.core/3.7.100.14/awssdk.core.3.7.100.14.nupkg.sha512",
     "/Users/chrisvanroode/.nuget/packages/awssdk.securitytoken/3.7.100.14/awssdk.securitytoken.3.7.100.14.nupkg.sha512",
