@@ -1235,11 +1235,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/chrisvanroode/ChrisvanRoodeWebsite/ChrisvanRoodeWebsite.csproj",
+      "projectUniqueName": "/Users/chrisvanroode/CvR/ChrisvanRoodeWebsite.csproj",
       "projectName": "ChrisvanRoodeWebsite",
-      "projectPath": "/Users/chrisvanroode/ChrisvanRoodeWebsite/ChrisvanRoodeWebsite.csproj",
+      "projectPath": "/Users/chrisvanroode/CvR/ChrisvanRoodeWebsite.csproj",
       "packagesPath": "/Users/chrisvanroode/.nuget/packages/",
-      "outputPath": "/Users/chrisvanroode/ChrisvanRoodeWebsite/obj/",
+      "outputPath": "/Users/chrisvanroode/CvR/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/chrisvanroode/.nuget/NuGet/NuGet.Config"
