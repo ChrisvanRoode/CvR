@@ -11,6 +11,10 @@ Roles
 
 function fetchRoles() {
     let selectTag = document.getElementById('userRoles');
+    var i, L = selectTag.options.length - 1;
+    for(i = L; i >= 0; i--) {
+        selectTag.remove(i);
+    }
 
     fetch('/api/roles')
         .then(response => response.json())
@@ -64,8 +68,9 @@ function fetchUsers() {
             const usersList = document.getElementById('usersList');
             usersList.innerHTML = '';
             data.forEach(user => {
+                console.log("user", user);
                 const listUser = document.createElement('li');
-                listUser.textContent = user.id + ' ' + user.firstname + ' ' + user.lastname + ' ' + user.telnumber + ' ' + user.email + ' ' + user.role;
+                listUser.textContent = user.id + ' ' + user.firstName + ' ' + user.lastName + ' ' + user.telNumber + ' ' + user.email + ' ' + user.role.title;
                 usersList.appendChild(listUser);
             });
         })
@@ -74,18 +79,18 @@ function fetchUsers() {
 
 document.getElementById('createUserForm').addEventListener('submit', function (e) {
     e.preventDefault();
-    const userFirstName = document.getElementById('userFirstName').value;
-    const userLastName = document.getElementById('userLastName').value;
-    const userPhoneNumber = document.getElementById('userPhoneNumber').value;
-    const userEmail = document.getElementById('userEmail').value;
-    const userRole = document.getElementById('userRoles').value;
-
-    fetch('/api/users', {
+    var userFirstName = document.getElementById('userFirstName').value
+    var userLastName = document.getElementById('userLastName').value
+    var userPhoneNumber = document.getElementById('userPhoneNumber').value
+    var userEmail = document.getElementById('userEmail').value
+    var userRole = document.getElementById('userRoles').value
+    var roleId = document.getElementById('userRoles').value
+    fetch('/api/users?roleId=' + roleId, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ Id: 1, FirstName: userFirstName, LastName: userLastName, TelNumber: userPhoneNumber, Email: userEmail }, userRole),
+        body: JSON.stringify({ Id: 1, FirstName: userFirstName, LastName: userLastName, TelNumber: userPhoneNumber, Email: userEmail }),
     })
         .then(response => response.json())
         .then(data => {

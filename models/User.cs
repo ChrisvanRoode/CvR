@@ -1,14 +1,16 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection.Metadata.Ecma335;
+using System.Net.Mail;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System.Net;
+using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
 
 public class User
 {
     [BsonId]
     public ObjectId _id { get; set; }
-    
-    // Initialize required properties with default values
-    // or ensure they are set in the constructor/object initializer
     public int Id { get; set; } = default!;
     public string FirstName { get; set; } = default!;
     public string LastName { get; set; } = default!;
@@ -16,7 +18,6 @@ public class User
     public string Email { get; set; } = default!;
     public Role? Role { get; set; }
 
-    // Constructor that takes 7 arguments
     public User(ObjectId _id, int id, string firstName, string lastName, string telNumber, string email, Role? role)
     {
         this._id = _id;

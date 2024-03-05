@@ -16,7 +16,12 @@ public class ItemRepository : IItemRepository
     
     public async Task<Item> CreateItemWithUniqueIntIdAsync(Item newItem)
     {
-        var maxId = await _itemsCollection.AsQueryable().MaxAsync(item => (int?)item.Id) ?? 0;
+        List<Item> items = await GetAllItemsAsync();
+        var maxId = 0;
+        if (items.Count > 0)
+        {
+            maxId = await _itemsCollection.AsQueryable().MaxAsync(user => (int?)user.Id) ?? 0;
+        }
         newItem.Id = maxId + 1;
         while (await _itemsCollection.Find(item => item.Id == newItem.Id).AnyAsync())
         {
@@ -30,14 +35,14 @@ public class ItemRepository : IItemRepository
         await _itemsCollection.Find(_ => true).ToListAsync();
 
     public async Task<Item> GetItemByIdAsync(string id) =>
-        await _itemsCollection.Find<Item>(item => item._id.ToString() == id).FirstOrDefaultAsync();
+        await _itemsCollection.Find<Item>(item => item.Id.ToString() == id).FirstOrDefaultAsync();
 
     public async Task CreateItemAsync(Item item) =>
         await _itemsCollection.InsertOneAsync(item);
 
     public async Task UpdateItemAsync(string id, Item item) =>
-        await _itemsCollection.ReplaceOneAsync(item => item._id.ToString() == id, item);
+        await _itemsCollection.ReplaceOneAsync(item => item.Id.ToString() == id, item);
 
     public async Task DeleteItemAsync(string id) =>
-        await _itemsCollection.DeleteOneAsync(item => item._id.ToString() == id);
+        await _itemsCollection.DeleteOneAsync(item => item.Id.ToString() == id);
 }
