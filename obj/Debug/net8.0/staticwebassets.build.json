@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "I5z7H1vkq0cQqNXpGxh/2Lv9ezil881qItjKzUzTdFY=",
+  "Hash": "B56WYVckvFBffDG1w8po7+vMe25oYdH1A6WskG4W21s=",
   "Source": "ChrisvanRoodeWebsite",
   "BasePath": "_content/ChrisvanRoodeWebsite",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "ChrisvanRoodeWebsite/wwwroot",
+      "Source": "ChrisvanRoodeWebsite",
+      "ContentRoot": "/Users/chrisvanroode/CvR/wwwroot/",
+      "BasePath": "_content/ChrisvanRoodeWebsite",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

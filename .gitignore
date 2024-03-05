@@ -1,2 +1,3 @@
-obj/Debug/net8.0/ChrisvanRoodeWebsite.AssemblyInfoInputs.cache
-obj/Debug/net8.0/ChrisvanRoodeWebsite.AssemblyInfo.cs
+appsettings.json
+obj/*
+bin/*
