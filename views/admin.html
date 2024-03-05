@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin page</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Admin page</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/admin">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <section>
+                <h2>Roles List</h2>
+                <ul id="rolesList"></ul>
+            </section>
+            <section>
+                <form id="createRoleForm">
+                    <h2>Create Role</h2>
+                    <label for="roleTitle">Role Title:</label>
+                    <input type="text" id="roleTitle" name="roleTitle" required>
+                    <button type="submit">Create Role</button>
+                </form>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Users List</h2>
+                <ul id="usersList"></ul>
+            </section>
+            <section>
+                <form id="createUserForm">
+                    <h2>Create User</h2>
+                    <label for="userFirstName">First name:</label>
+                    <input type="text" id="userFirstName" name="userFirstName" required>
+                    <label for="userLastName">Last name:</label>
+                    <input type="text" id="userLastName" name="userLastName" required>
+                    <label for="userPhoneNumber">Phone number:</label>
+                    <input type="number" id="userPhoneNumber" name="userPhoneNumber" required>
+                    <label for="userEmail">Email:</label>
+                    <input type="text" id="userEmail" name="userEmail" required>
+                    <label for="userRole">Role:</label>
+                    <select id="userRoles" name="userRoles"></select>
+                    <button type="submit">Create User</button>
+                </form>
+            </section>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 My Website. All rights reserved.</p>
+    </footer>
+    <script src="/js/adminscript.js"></script>
+</body>
+
+</html>

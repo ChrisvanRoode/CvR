@@ -1,0 +1,6 @@
+@ChrisvanRoodeWebsite_HostAddress = http://localhost:5001
+
+GET {{ChrisvanRoodeWebsite_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
